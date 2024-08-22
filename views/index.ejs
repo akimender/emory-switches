@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="big-container">
+        <h1>Guys let's do something</h1>
+        <div class="big-grid">
+            <div class="medium-container">
+                <label class="switch">
+                    <input type="checkbox" class="toggle-switch">
+                    <span class="slider round"></span>
+                </label>
+
+                <h2>woody's</h2>
+            </div>
+            <div class="medium-container">
+                <label class="switch">
+                    <input type="checkbox" class="toggle-switch">
+                    <span class="slider round"></span>
+                </label>
+
+                <h2>sleep</h2>
+            </div>
+            <div class="medium-container">
+                <label class="switch">
+                    <input type="checkbox" class="toggle-switch">
+                    <span class="slider round"></span>
+                </label>
+
+                <h2>study</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkSwitches() {
+            const switches = document.querySelectorAll('.toggle-switch');
+
+            switches.forEach((toggleSwitch, index) => {
+                toggleSwitch.addEventListener('change', () => {
+                    if (toggleSwitch.checked) {
+                        preventAllSwitched(switches, index);
+                    }
+                });
+            });
+        }
+
+        function preventAllSwitched(switches, index) {
+            let counter = 0;
+
+            switches.forEach((toggleSwitch, index) => {
+                if (toggleSwitch.checked) {
+                    counter++;
+                }
+            })
+
+            if (counter == 3) {
+                const randomNum = giveRandomNum(index);
+                switches[randomNum].checked = false;
+            }
+        }
+
+        function giveRandomNum(avoidNum) {
+            let num = avoidNum;
+            while (num == avoidNum) {
+                num = Math.floor(Math.random() * 3);
+            }
+            return num;
+        }
+
+        document.addEventListener('DOMContentLoaded', checkSwitches);
+    </script>
+</body>
+</html>
