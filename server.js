@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 });
 
-app.listen(PORT, () => console.log('Example app is listening on port 3000.'));
+app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}`));
